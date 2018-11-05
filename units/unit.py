@@ -3,7 +3,6 @@ from abilities.abilitiy import Abilitiy
 
 class Unit:
 
-
     def __init__(self, title, hit_points_limit, damage):
         self._default_state = DefaultState(title, hit_points_limit, damage)
         self._abilitiy = Abilitiy(self)
@@ -56,4 +55,8 @@ class Unit:
 
     def attack(self, enemy):
         self._abilitiy.attack(enemy)
+
+    def __repr__(self):
+        return 'Title: %s\nHp: %d\nDmg: %d\n' % (self.title, self.hit_points, self.damage)
+
 
