@@ -10,3 +10,7 @@ class Berserker(Unit):
 
     def take_magic_damage(self, damage):
         self._berserker_state.take_magic_damage(damage)
+
+    def set_state(self, new_state):
+        super(Berserker, self).set_state(new_state)
+        self._berserker_state = new_state

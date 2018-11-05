@@ -59,6 +59,15 @@ class Unit:
     def attack(self, enemy):
         self._abilitiy.attack(enemy)
 
+    def set_abilitiy(self, new_abilitiy):
+        self._abilitiy = new_abilitiy
+
+    def set_state(self, new_state):
+        self._default_state = new_state
+
+    def use_abilitiy_one(self, target):
+        self._abilitiy.use_abilitiy_one(target)
+
     def __repr__(self):
         return 'Title: %s\nHp: %d\nDmg: %d\n' % (self.title, self.hit_points, self.damage)
 

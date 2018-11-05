@@ -19,3 +19,6 @@ class Abilitiy:
             enemy.add_hit_points(heal)
 
         self._attacker.take_damage(damage_enemy)
+
+    def use_abilitiy_one(self, target):
+        pass
