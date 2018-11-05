@@ -3,10 +3,13 @@ from abilities.abilitiy import Abilitiy
 
 class Unit:
 
+
     def __init__(self, title, hit_points_limit, damage):
         self._default_state = DefaultState(title, hit_points_limit, damage)
         self._abilitiy = Abilitiy(self)
 
+    def __call__():
+        print('Unit can\'t be created')
 
     def ensure_is_alive(self):
         return self._default_state.ensure_is_alive()
