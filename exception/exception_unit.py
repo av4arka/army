@@ -1,5 +1,5 @@
 class UnitIsDead(Exception):
 
 
-    def __init__(self, txt):
-        UnitIsDead.txt = txt
+    def __init__(self, text):
+        UnitIsDead.text = text

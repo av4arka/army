@@ -62,7 +62,6 @@ class DefaultState:
         new_hit_points = self._hit_points + heal
 
         self.ensure_is_alive()
-
         if new_hit_points > self._hit_points_limit:
             new_hit_points = self._hit_points_limit
 

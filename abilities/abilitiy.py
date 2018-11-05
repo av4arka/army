@@ -13,7 +13,7 @@ class Abilitiy:
     def counter_attack(self, enemy):
         damage_enemy = enemy.damage / 2
 
-        if enemy.title is 'Vampire':
+        if enemy.title == 'Vampire':
             heal = self._attacker.hit_points_limit / 10
 
             enemy.add_hit_points(heal)
