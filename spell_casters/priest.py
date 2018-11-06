@@ -11,3 +11,7 @@ class Priest(SpellCaster):
 
     def attack(self, enemy):
         self._priest_abilitiy.attack(enemy)
+
+    def change_abilitiy(self, new_abilitiy):
+        super(Priest,self).change_abilitiy(new_abilitiy)
+        self._priest_abilitiy = new_abilitiy
