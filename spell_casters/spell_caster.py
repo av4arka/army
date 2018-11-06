@@ -6,10 +6,10 @@ from spells.lightning import Lightning
 class SpellCaster(Unit):
 
 
-    def __init__(self, title, hit_points_limit, damage, mana_limit):
+    def __init__(self, title, hit_points_limit, damage, mana_limit, spell=Lightning(10,10)):
         Unit.__init__(self, title, hit_points_limit, damage)
         self._magic_state = MagicState(title, hit_points_limit, damage, mana_limit)
-        self._spell = Lightning(10, 10)
+        self._spell = spell
         self._magic_abilitiy = MagicAbilitiy(self, self._spell)
 
     @property
