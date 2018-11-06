@@ -4,7 +4,7 @@ from abilities.roque_abilitiy import RoqueAbilitiy
 class Roque(Unit):
 
 
-    def __init__(self, title, hit_points_limit, damage):
+    def __init__(self, title='Roque', hit_points_limit=150, damage=40):
         Unit.__init__(self, title, hit_points_limit, damage)
         self._roque_abilitiy = RoqueAbilitiy(self)
 

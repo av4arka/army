@@ -3,7 +3,7 @@ from spells.spell import Spell
 class Lightning(Spell):
 
 
-    def __init__(self, spell_power, cost):
+    def __init__(self, spell_power=30, cost=10):
         Spell.__init__(self, spell_power, cost)
 
     def use_spell(self, attacker, target):

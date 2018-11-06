@@ -4,7 +4,7 @@ from abilities.vampire_abilitiy import VampireAbilitiy
 class Vampire(Unit):
 
 
-    def __init__(self, title, hit_points_limit, damage):
+    def __init__(self, title='Vampire', hit_points_limit=130, damage=60):
         Unit.__init__(self, title, hit_points_limit, damage)
         self._vampire_abilitiy = VampireAbilitiy(self)
 

@@ -4,7 +4,7 @@ from states.berserker_state import BerserkerState
 class Berserker(Unit):
 
 
-    def __init__(self, title, hit_points_limit, damage):
+    def __init__(self, title='Berserker', hit_points_limit=190, damage=35):
         Unit.__init__(self, title, hit_points_limit, damage)
         self._berserker_state = BerserkerState(title, hit_points_limit, damage)
 
