@@ -24,11 +24,3 @@ class Spell:
     def test_healing_spells(self, attacker):
         if attacker.title == 'Wizard':
             self._spell_power /= 2
-
-
-        # void
-        # Spell::testForHealingSpells(Unit * attacker)
-        # {
-        # if (strcmp(attacker->getTitle(), "Wizard") == 0 ) {
-        #     setSpellPower(this->getSpellPower() / 2);
-        # }
