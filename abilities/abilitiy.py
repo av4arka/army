@@ -22,3 +22,6 @@ class Abilitiy:
 
     def use_abilitiy_one(self, target):
         pass
+
+    def use_abilitiy_two(self):
+        pass
