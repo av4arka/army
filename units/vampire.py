@@ -13,3 +13,6 @@ class Vampire(Unit):
 
     def use_abilitiy_one(self, target):
         self._vampire_abilitiy.use_abilitiy_one(target)
+
+    def is_undead(self):
+        return True

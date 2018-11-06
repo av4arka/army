@@ -34,6 +34,10 @@ class Unit:
     def default_state(self):
         return self._default_state
 
+    @property
+    def is_undead(self):
+        return False
+
     @hit_points.setter
     def hit_points(self, new_hit_points):
         self._default_state.hit_points = new_hit_points
