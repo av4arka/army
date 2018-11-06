@@ -4,7 +4,7 @@ class MagicState(DefaultState):
 
 
     def __init__(self, title, hit_points_limit, damage, mana_limit):
-        DefaultState.__init__(self, title, hit_points_limit, damage)
+        DefaultState.__init__(self, title, hit_points_limit, damage, self)
         self._mana_limit = mana_limit
         self._mana = mana_limit
 

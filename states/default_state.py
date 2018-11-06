@@ -3,11 +3,12 @@ from exception.exception_unit import UnitIsDead
 class DefaultState:
 
 
-    def __init__(self, title, hit_points_limit, damage):
+    def __init__(self, title, hit_points_limit, damage, unit):
         self._title = str(title)
         self._hit_points_limit = int(hit_points_limit)
         self._hit_points = int(hit_points_limit)
         self._damage = int(damage)
+        self._unit = unit
 
     def  ensure_is_alive(self):
         if self._hit_points <= 0:
@@ -68,7 +69,7 @@ class DefaultState:
         self._hit_points = new_hit_points
 
     def take_damage(self, damage):
-        self.ensure_is_alive()
+        self._unit.ensure_is_alive()
 
         if damage < 0:
             damage = 0

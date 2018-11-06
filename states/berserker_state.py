@@ -4,7 +4,7 @@ class BerserkerState(DefaultState):
 
 
     def __init__(self, title, hit_points_limit, damage):
-        DefaultState.__init__(self, title, hit_points_limit, damage)
+        DefaultState.__init__(self, title, hit_points_limit, damage, self)
 
     def take_magic_damage(self, damage):
         pass

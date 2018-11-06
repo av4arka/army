@@ -4,7 +4,7 @@ class WerewolfState(DefaultState):
 
 
     def __init__(self, title, hit_points_limit, damage, werewolf):
-        DefaultState.__init__(self, title, hit_points_limit, damage)
+        DefaultState.__init__(self, title, hit_points_limit, damage, self)
         self._werewolf = werewolf
         self._is_wolf = False
 
