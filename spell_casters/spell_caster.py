@@ -38,5 +38,16 @@ class SpellCaster(Unit):
     def change_spell(self, spell_number):
         self._spell = self._spell_book.change_spell(spell_number)
 
+    def change_abilitiy(self, new_abilitiy):
+        super(SpellCaster, self).change_abilitiy(new_abilitiy)
+        self._magic_abilitiy = new_abilitiy
+
+    def change_state(self, new_state):
+        super(SpellCaster, self).change_state(new_state)
+
+        self._magic_state = new_state
+
     def __repr__(self):
+        if self.title == 'Vampire' or 'Werewolf' or 'Wolf':
+            return Unit.__repr__(self)
         return Unit.__repr__(self) + 'Mana: %d\n' % (self._magic_state.mana)
