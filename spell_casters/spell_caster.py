@@ -2,6 +2,7 @@ from units.unit import Unit
 from states.magic_state import MagicState
 from abilities.magic_abilitiy import MagicAbilitiy
 from spells.lightning import Lightning
+from spell_book.spell_book import SpellBook
 
 class SpellCaster(Unit):
 
@@ -11,6 +12,7 @@ class SpellCaster(Unit):
         self._magic_state = MagicState(title, hit_points_limit, damage, mana_limit)
         self._spell = spell
         self._magic_abilitiy = MagicAbilitiy(self, self._spell)
+        self._spell_book = SpellBook(self._spell)
 
     @property
     def mana(self):
@@ -32,6 +34,9 @@ class SpellCaster(Unit):
 
     def add_mana(self, amount_mana):
         self._magic_state.add_mana(amount_mana)
+
+    def change_spell(self, spell_number):
+        self._spell = self._spell_book.change_spell(spell_number)
 
     def __repr__(self):
         return Unit.__repr__(self) + 'Mana: %d\n' % (self._magic_state.mana)
