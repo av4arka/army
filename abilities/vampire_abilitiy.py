@@ -33,11 +33,11 @@ class VampireAbilitiy(Abilitiy):
 
         for unit in self._not_transformed:
             if target.title == unit:
-                print(unit + ' can\'t be bitten' )
+                print(unit, 'can\'t be bitten')
                 return
 
-        target.set_abilitiy(VampireAbilitiy(target))
-        target.set_state(DefaultState(target.title, target.hit_points, target.damage))
+        target.change_abilitiy(VampireAbilitiy(target))
+        target.change_state(DefaultState(target.title, target.hit_points, target.damage))
 
         target.title = self._attacker.title
         target.hit_points_limit = self._attacker.hit_points_limit

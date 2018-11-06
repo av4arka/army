@@ -11,6 +11,6 @@ class Roque(Unit):
     def attack(self, enemy):
         self._roque_abilitiy.attack(enemy)
 
-    def set_abilitiy(self, new_abilitiy):
-        super(Roque, self).set_abilitiy(new_abilitiy)
+    def change_abilitiy(self, new_abilitiy):
+        super(Roque, self).change_abilitiy(new_abilitiy)
         self._roque_abilitiy = new_abilitiy
