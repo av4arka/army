@@ -1,11 +1,12 @@
-from states.default_state import DefaultState
 from abilities.abilitiy import Abilitiy
+from states.default_state import DefaultState
+
 
 class Unit:
 
 
     def __init__(self, title, hit_points_limit, damage):
-        self._default_state = DefaultState(title, hit_points_limit, damage)
+        self._default_state = DefaultState(title, hit_points_limit, damage, self)
         self._abilitiy = Abilitiy(self)
 
     def __call__():
