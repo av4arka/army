@@ -34,4 +34,4 @@ class SpellCaster(Unit):
         self._magic_state.add_mana(amount_mana)
 
     def __repr__(self):
-        return Unit.__repr__(self) + 'Mana: %d' % (self._magic_state.mana)
+        return Unit.__repr__(self) + 'Mana: %d\n' % (self._magic_state.mana)
