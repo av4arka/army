@@ -37,7 +37,7 @@ class VampireAbilitiy(Abilitiy):
                 return
 
         target.change_abilitiy(VampireAbilitiy(target))
-        target.change_state(DefaultState(target.title, target.hit_points, target.damage))
+        target.change_state(DefaultState(target.title, target.hit_points, target.damage, target))
 
         target.title = self._attacker.title
         target.hit_points_limit = self._attacker.hit_points_limit
