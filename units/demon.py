@@ -11,6 +11,7 @@ class Demon(Unit):
     def ensure_is_alive(self):
         if self.hit_points <= 0:
             self.hit_points = 0
+            self.notify()
             self._warlock.demon_is_dead(self)
             raise UnitIsDead(self.title + ' is dead!')
 
