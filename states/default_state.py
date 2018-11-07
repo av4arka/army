@@ -13,6 +13,7 @@ class DefaultState:
     def  ensure_is_alive(self):
         if self._hit_points <= 0:
             self._hit_points = 0
+            self._unit.notify()
             raise UnitIsDead(self._title + ' is dead!')
 
     @property
