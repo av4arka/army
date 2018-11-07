@@ -7,7 +7,7 @@ from spell_book.spell_book import SpellBook
 class SpellCaster(Unit):
 
 
-    def __init__(self, title, hit_points_limit, damage, mana_limit, spell=Lightning(10,10)):
+    def __init__(self, title, hit_points_limit, damage, mana_limit, spell=Lightning()):
         Unit.__init__(self, title, hit_points_limit, damage)
         self._magic_state = MagicState(title, hit_points_limit, damage, mana_limit)
         self._spell = spell
