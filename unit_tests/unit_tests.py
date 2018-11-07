@@ -158,6 +158,19 @@ class WizardTest(unittest.TestCase):
         wizard.use_abilitiy_one(soldier)
         self.assertEqual(soldier.hit_points, 130)
 
+class PriestTest(unittest.TestCase):
+
+    def test_attack(self):
+        priest = Priest()
+        soldier = Soldier()
+        vampire = Vampire()
+
+        priest.attack(soldier)
+        self.assertEqual(soldier.hit_points, 183)
+        priest.attack(vampire)
+        self.assertEqual(vampire.hit_points, 105)
+
+
 if __name__ == '__main__':
     unittest.main()
 
