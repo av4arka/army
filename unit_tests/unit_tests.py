@@ -106,71 +106,32 @@ class VampireTest(unittest.TestCase):
         self.assertEqual(vampire1.hit_points, 53)
         self.assertEqual(vampire2.hit_points, 66)
 
+class WerewolfTest(unittest.TestCase):
 
+    def test_werewolf_use_abilitiy(self):
+        werewolf = Werewolf()
+
+        werewolf.use_abilitiy_two()
+        self.assertEqual(werewolf.hit_points_limit, 226)
+        self.assertEqual(werewolf.damage, 65)
+        self.assertEqual(werewolf.title, 'Wolf')
+        werewolf.use_abilitiy_two()
+        self.assertEqual(werewolf.hit_points_limit, 170)
+        self.assertEqual(werewolf.damage, 40)
+        self.assertEqual(werewolf.title, 'Werewolf')
+
+    def test_take_magic_damage(self):
+        werewolf = Werewolf()
+
+        werewolf.use_abilitiy_two()
+        werewolf.take_magic_damage(40)
+        self.assertEqual(werewolf.hit_points, 115)
 
 
 if __name__ == '__main__':
     unittest.main()
 
 
-# TEST_CASE("Test for Vampire")
-# {
-#     Vampire
-# vampire;
-# Vampire
-# vampire2;
-#
-# vampire.attack( & vampire2);
-# REQUIRE(vampire.getHitPoints() == 100);
-# REQUIRE(vampire2.getHitPoints() == 83);
-# vampire2.attack( & vampire);
-# REQUIRE(vampire.getHitPoints() == 53);
-# REQUIRE(vampire2.getHitPoints() == 66);
-# }
-#
-#
-# TEST_CASE("Test for Werewolf")
-# {
-#     Werewolf
-# werewolf;
-#
-# SECTION("Transmutation")
-# {
-# int
-# addHp = werewolf.getHitPointsLimit() / 3;
-# int
-# newHp = werewolf.getHitPoints() + addHp;
-# int
-# newDmg = werewolf.getDamage() + 25;
-# int
-# returnLives = newHp / 4;
-#
-# werewolf.useAbilitiy_2();
-# REQUIRE(werewolf.getHitPointsLimit() == newHp);
-# REQUIRE(werewolf.getDamage() == newDmg);
-# werewolf.useAbilitiy_2();
-# REQUIRE(werewolf.getHitPointsLimit() == newHp - returnLives);
-# REQUIRE(werewolf.getDamage() == newDmg - 25);
-# }
-#
-# SECTION("Test on take magic damage")
-# {
-# int
-# hitPoints = werewolf.getHitPoints();
-# int
-# dmg = 20;
-#
-# werewolf.takeMagicDamage(dmg);
-# REQUIRE(werewolf.getHitPoints() == hitPoints - dmg);
-#
-# werewolf.useAbilitiy_2();
-# hitPoints = werewolf.getHitPoints();
-# werewolf.takeMagicDamage(dmg);
-# REQUIRE(werewolf.getHitPoints() == hitPoints - 35);
-# }
-# }
-#
-#
 # TEST_CASE("Test for Wizard")
 # {
 #     Wizard
