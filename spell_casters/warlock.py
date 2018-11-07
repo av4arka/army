@@ -34,15 +34,3 @@ class Warlock(SpellCaster):
         self._warlock_abilitiy = new_abilitiy
         del self._demons
 
-# void Warlock::ensureIsAlive() {
-#     if ( getHitPoints() <= 0 ) {
-#         setHitPoints(0);
-#
-#         for ( int lo = 0, hi = demons->size(); lo < hi; lo++ ) {
-#             getDemon(lo)->notify();
-#         }
-#         demons->clear();
-#         notify();
-#         throw UnitIsDead();
-#     }
-# }
