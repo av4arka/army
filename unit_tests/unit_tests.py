@@ -170,122 +170,46 @@ class PriestTest(unittest.TestCase):
         priest.attack(vampire)
         self.assertEqual(vampire.hit_points, 105)
 
+class WarlockTest(unittest.TestCase):
+
+    def test_warlock_use_abilitiy(self):
+        warlock = Warlock()
+        soldier = Soldier()
+        vampire = Vampire()
+
+        warlock.use_abilitiy_two()
+        self.assertEqual(warlock[0].hit_points, 80)
+        self.assertEqual(warlock[0].damage, 30)
+        self.assertEqual(warlock.mana, 80)
+
+        warlock[0].attack(soldier)
+        self.assertEqual(soldier.hit_points, 170)
+        self.assertEqual(warlock[0].hit_points, 57)
+
+        try:
+            soldier.attack(warlock[0])
+            soldier.attack(warlock[0])
+            soldier.attack(warlock[0])
+        except UnitIsDead:
+            self.assertEqual(warlock[0], None)
+
+    def test_warlock_dead(self):
+        warlock = Warlock()
+
+        warlock.use_abilitiy_two()
+        warlock.use_abilitiy_two()
+        warlock.use_abilitiy_two()
+
+        try:
+            warlock.take_damage(150)
+            warlock.take_damage(1)
+        except:
+            self.assertEqual(warlock[0], None)
+
 
 if __name__ == '__main__':
     unittest.main()
 
-
-# TEST_CASE("Test for Priest")
-# {
-#     Priest
-# priest;
-# Soldier
-# target;
-#
-# SECTION("Priest cast test")
-# {
-# int
-# newHp = target.getHitPoints();
-#
-# priest.changeSpell(1);
-# priest.cast( & target);
-# REQUIRE(target.getHitPoints() == newHp - priest.getSpellPower());
-# priest.changeSpell(3);
-# priest.cast( & target);
-# REQUIRE(target.getHitPoints() == target.getHitPointsLimit());
-# REQUIRE(priest.getMana() == 65);
-# }
-#
-# SECTION("Physical attack test")
-# {
-# Necromancer
-# necromancer;
-# Vampire
-# vampire;
-# Werewolf
-# werewolf;
-#
-# priest.attack( & necromancer);
-# REQUIRE(necromancer.getHitPoints() == 86);
-# priest.attack( & vampire);
-# REQUIRE(vampire.getHitPoints() == 105);
-#
-# werewolf.useAbilitiy_1( & necromancer);
-# priest.attack( & necromancer);
-# REQUIRE(necromancer.getHitPoints() == 69);
-# }
-# }
-#
-# TEST_CASE("Test for Warlock")
-# {
-#     Warlock
-# warlock;
-#
-# SECTION("Test for Demon")
-# {
-# warlock.cast();
-# Soldier
-# soldier;
-# Vampire
-# vampire;
-# int
-# amountOfDemeons = warlock.getAmountDemons();
-#
-# REQUIRE(warlock.getDemon(0)->getHitPointsLimit() == 80);
-# REQUIRE(warlock.getDemon(0)->getDamage() == 30);
-#
-# warlock.getDemon(0)->attack( & soldier);
-# REQUIRE(warlock.getDemon(0)->getHitPoints() == 58);
-#
-# vampire.useAbilitiy_1(warlock.getDemon(0));
-# REQUIRE(warlock.getDemon(0)->getHitPointsLimit() == 80);
-# REQUIRE(warlock.getDemon(0)->getDamage() == 30);
-#
-# try {
-# vampire.attack(warlock.getDemon(0));
-# vampire.attack(warlock.getDemon(0));
-# }catch(...) {
-# REQUIRE(warlock.getAmountDemons() == amountOfDemeons - 1);
-# }
-#
-# }
-#
-# SECTION("Warlock cast test")
-# {
-# warlock.cast();
-# REQUIRE(warlock.getMana() == 80);
-#
-# warlock.cast();
-# REQUIRE(warlock.getMana() == 60);
-#
-# warlock.cast();
-# warlock.cast();
-# REQUIRE(warlock.getMana() == 20);
-#
-# warlock.getDemon(3)->attack( & warlock);
-# REQUIRE(warlock.getHitPoints() == 100);
-#
-# warlock.cast();
-# REQUIRE(warlock.getDemon(4) == 0);
-# }
-#
-# SECTION("Dead of Warlock test")
-# {
-# warlock.cast();
-# warlock.cast();
-# warlock.cast();
-#
-# REQUIRE(warlock.getAmountDemons() == 3);
-#
-# try {
-# warlock.takeDamage(130);
-# warlock.takeDamage(1);
-#
-# } catch(...) {
-# REQUIRE(warlock.getAmountDemons() == 0);
-# }
-# }
-#
 # SECTION("Vampire bite test")
 # {
 # Vampire
