@@ -1,5 +1,5 @@
 import unittest
-from my_army import *
+from unit_tests.my_army import *
 from exception.exception_unit import UnitIsDead
 
 class SoldierTest(unittest.TestCase):
