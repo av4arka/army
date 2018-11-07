@@ -14,21 +14,4 @@ class Demon(Unit):
             self.hit_points = 0
             self.notify()
             self._warlock.demon_is_dead(self)
-
             raise UnitIsDead(self.title + ' is dead!')
-
-
-    # def ensure_is_alive(self):
-    #     void
-    #     Demon::ensureIsAlive()
-    #     {
-    #     if (getHitPoints() <= 0)
-    #     {
-    #
-    #         setHitPoints(0);
-    #     warlock->eraseDemon(this);
-    #     notify();
-    #     throw
-    #     UnitIsDead();
-    #     }
-    #     }
