@@ -206,136 +206,67 @@ class WarlockTest(unittest.TestCase):
         except:
             self.assertEqual(warlock[0], None)
 
+class NecromancerTest(unittest.TestCase):
+
+    def test_attack(self):
+        necromancer = Necromancer()
+        necromancer2 = Necromancer()
+        soldier = Soldier()
+
+        necromancer.attack(soldier)
+        necromancer2.attack(soldier)
+
+        try:
+            soldier.take_damage(200)
+            soldier.take_damage(1)
+        except UnitIsDead:
+            self.assertEqual(necromancer.hit_points, 130)
+            self.assertEqual(necromancer2.hit_points, 130)
+
+        necromancer.attack(necromancer2)
+        try:
+            necromancer2.take_damage(200)
+            necromancer2.take_damage(1)
+        except UnitIsDead:
+            self.assertEqual(necromancer.hit_points, 130)
+
+    def test_necromancer_dead(self):
+        necromancer = Necromancer()
+        soldier = Soldier()
+
+        necromancer.attack(soldier)
+        try:
+            necromancer.take_damage(200)
+            necromancer.take_damage(1)
+        except UnitIsDead:
+            self.assertEqual(necromancer.hit_points, 0)
+
+        try:
+            soldier.take_damage(200)
+            soldier.take_damage(1)
+        except UnitIsDead:
+            self.assertEqual(necromancer.hit_points, 0)
+
+    def test_werewolf_use_abilitiy(self):
+        necromancer = Necromancer()
+        werewolf = Werewolf()
+        soldier = Soldier()
+
+        necromancer.attack(werewolf)
+        werewolf.use_abilitiy_one(necromancer)
+        try:
+            werewolf.take_damage(200)
+            werewolf.take_damage(1)
+        except UnitIsDead:
+            self.assertEqual(necromancer.hit_points, 110)
+
+        necromancer.attack(soldier)
+        try:
+            soldier.take_damage(200)
+            soldier.take_damage(1)
+        except UnitIsDead:
+            self.assertEqual(necromancer.hit_points, 87)
+
 
 if __name__ == '__main__':
     unittest.main()
-
-# SECTION("Vampire bite test")
-# {
-# Vampire
-# vampire;
-#
-# vampire.useAbilitiy_1( & warlock);
-# REQUIRE(warlock.getAmountDemons() == 0);
-#
-# warlock.cast();
-# REQUIRE(warlock.getAmountDemons() == 0);
-#
-# vampire.attack( & warlock);
-# REQUIRE(warlock.getHitPoints() == 83);
-#
-# }
-# }
-#
-# TEST_CASE("Test for Necromancer")
-# {
-#     Necromancer
-# necromancer;
-# Necromancer
-# necromancer2;
-# Soldier
-# soldier;
-# Warlock
-# warlock;
-#
-# SECTION("Attack test")
-# {
-# necromancer.attack( & soldier);
-# necromancer2.attack( & soldier);
-#
-# necromancer.takeDamage(88);
-# necromancer2.takeDamage(78);
-# try{
-# soldier.takeDamage(200);
-# necromancer.attack( & soldier);
-# }catch (...) {
-# REQUIRE(necromancer.getHitPoints() == 76);
-# REQUIRE(necromancer2.getHitPoints() == 86);
-# }
-#
-# necromancer.attack( & necromancer2);
-#
-# try {
-# necromancer2.takeDamage(50);
-# necromancer.attack( & necromancer2);
-# } catch (...) {
-# REQUIRE(necromancer.getHitPoints() == 96);
-# }
-# }
-#
-# SECTION("Death of Necromancer test")
-# {
-# necromancer.attack( & soldier);
-#
-# try {
-# necromancer.takeDamage(120);
-# necromancer.takeDamage(100);
-# }catch(...) {
-# REQUIRE(necromancer.getHitPoints() == 0);
-# }
-#
-# try {
-# soldier.takeDamage(200);
-# soldier.takeDamage(20);
-# }catch(...) {
-# REQUIRE(necromancer.getHitPoints() == 0);
-# }
-# }
-#
-# SECTION("Werewolf bite test")
-# {
-# Werewolf
-# werewolf;
-#
-# necromancer.attack( & werewolf);
-# werewolf.useAbilitiy_1( & necromancer);
-# REQUIRE_FALSE(necromancer.isUndead());
-#
-# try {
-# werewolf.takeDamage(150);
-# necromancer.attack( & werewolf);
-# }catch(...) {
-# REQUIRE(necromancer.getHitPoints() == 100);
-# }
-# necromancer.attack( & soldier);
-#
-# try {
-# soldier.takeDamage(160);
-# necromancer.attack( & soldier);
-# }catch (...) {
-# REQUIRE(necromancer.getHitPoints() == 78);
-# }
-# }
-#
-# SECTION("Attack the Demon test")
-# {
-# warlock.cast();
-# warlock.cast();
-# warlock.cast();
-# warlock.cast();
-#
-# necromancer.attack(warlock.getDemon(0));
-#
-# try {
-# warlock.getDemon(0)->takeDamage(40);
-# necromancer.attack(warlock.getDemon(0));
-# }catch(...) {
-# REQUIRE(necromancer.getHitPoints() == 120);
-# }
-#
-# warlock.cast();
-#
-# necromancer.attack(warlock.getDemon(0));
-# necromancer.attack(warlock.getDemon(1));
-# necromancer.attack(warlock.getDemon(2));
-# necromancer.attack(warlock.getDemon(3));
-#
-# necromancer.takeDamage(50);
-# try {
-# warlock.takeDamage(130);
-# necromancer.attack( & warlock);
-# }catch (...) {
-# REQUIRE(necromancer.getHitPoints() == 114);
-# }
-# }
-# }
