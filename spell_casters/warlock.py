@@ -13,6 +13,7 @@ class Warlock(SpellCaster):
     def ensure_is_alive(self):
         if self.hit_points <= 0:
             self.hit_points = 0
+            self.notify()
             del self._demons
             raise UnitIsDead(self.title + 'is dead!')
 
