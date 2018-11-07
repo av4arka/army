@@ -1,8 +1,8 @@
 from abilities.abilitiy import Abilitiy
 from states.default_state import DefaultState
+from interfaces.observable import Observable
 
-
-class Unit:
+class Unit(Observable):
 
     def __init__(self, title, hit_points_limit, damage):
         if not self.valid_arguments(title, hit_points_limit, damage):
@@ -10,6 +10,7 @@ class Unit:
 
         self._default_state = DefaultState(title, hit_points_limit, damage, self)
         self._abilitiy = Abilitiy(self)
+        self._observers = []
 
     def  valid_arguments(self, title, hit_points_limit, damage):
         if isinstance(hit_points_limit, int) and isinstance(damage, int) \
@@ -83,6 +84,16 @@ class Unit:
 
     def use_abilitiy_two(self):
         self._abilitiy.use_abilitiy_two()
+
+    def attach(self, observer):
+        self._observers.append(observer)
+
+    def detach(self, observer):
+        self._observers.remove(observer)
+
+    def notify(self):
+        for observer in self._observers:
+            observer.update(self)
 
     def __repr__(self):
         return 'Title: %s\nHp: %d\nDmg: %d\n' % (self.title, self.hit_points, self.damage)
