@@ -127,74 +127,41 @@ class WerewolfTest(unittest.TestCase):
         werewolf.take_magic_damage(40)
         self.assertEqual(werewolf.hit_points, 115)
 
+class WizardTest(unittest.TestCase):
+
+    def test_wizard_use_abilitiy(self):
+        wizard = Wizard()
+        soldier = Soldier()
+
+        wizard.use_abilitiy_one(soldier)
+        self.assertEqual(soldier.hit_points, 170)
+        self.assertEqual(wizard.mana, 90)
+
+    def test_do_mana(self):
+        wizard = Wizard()
+
+        wizard.expend_mana(40)
+        self.assertEqual(wizard.mana, 60)
+        wizard.add_mana(100)
+        self.assertEqual(wizard.mana, 100)
+
+    def test_change_spell(self):
+        wizard = Wizard()
+        soldier = Soldier()
+
+        wizard.use_abilitiy_one(soldier)
+        self.assertEqual(soldier.hit_points, 170)
+        wizard.change_spell(1)
+        wizard.use_abilitiy_one(soldier)
+        self.assertEqual(soldier.hit_points, 185)
+        wizard.change_spell(2)
+        wizard.use_abilitiy_one(soldier)
+        self.assertEqual(soldier.hit_points, 130)
 
 if __name__ == '__main__':
     unittest.main()
 
 
-# TEST_CASE("Test for Wizard")
-# {
-#     Wizard
-# wizard;
-# Soldier
-# target;
-#
-# SECTION("Wizard casts test")
-# {
-# int
-# spellPower = wizard.getSpellPower();
-# int
-# newHP = target.getHitPoints() - spellPower;
-#
-# wizard.cast( & target);
-# REQUIRE(target.getHitPoints() == newHP);
-# REQUIRE(wizard.getMana() == 90);
-# }
-#
-# SECTION("test for mana")
-# {
-# int
-# hpTarget = target.getHitPoints();
-#
-# wizard.expendMana(100);
-# REQUIRE(wizard.getMana() == 0);
-# wizard.cast( & target);
-# REQUIRE(target.getHitPoints() == hpTarget);
-# wizard.addMana(150);
-# REQUIRE(wizard.getMana() == 100);
-#
-# }
-#
-# SECTION("Change spell test")
-# {
-# wizard.cast( & target);
-# REQUIRE(target.getHitPoints() == 170);
-# wizard.changeSpell(3);
-# wizard.cast( & target);
-# REQUIRE(target.getHitPoints() == 185);
-# wizard.changeSpell(2);
-# wizard.cast( & target);
-# REQUIRE(target.getHitPoints() == 130);
-# wizard.changeSpell(4);
-# wizard.cast( & target);
-# REQUIRE(target.getHitPoints() == 155);
-# }
-#
-# SECTION("Werewolf bite test")
-# {
-# Werewolf
-# werewolf;
-#
-# werewolf.useAbilitiy_1( & wizard);
-#
-# REQUIRE(wizard.getMana() == 0);
-#
-# wizard.cast( & werewolf);
-# REQUIRE(werewolf.getHitPoints() == 170);
-#
-# }
-# }
-#
 # TEST_CASE("Test for Priest")
 # {
 #     Priest
