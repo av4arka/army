@@ -19,11 +19,11 @@ class WerewolfAbilitiy(Abilitiy):
             return
 
         target.change_state(WerewolfState(target.title, target.hit_points, target.damage, target))
-        target.change_abilitiy(WerewolfAbilitiy(target, target.default_state))
 
         target.title = self._attacker.title
         target.hit_points_limit = self._attacker.hit_points_limit
         target.damage = self._attacker.damage
+        target.change_abilitiy(WerewolfAbilitiy(target, target.default_state))
 
     def use_abilitiy_two(self):
         self._attacker.ensure_is_alive()
