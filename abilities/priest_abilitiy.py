@@ -11,7 +11,7 @@ class PriestAbilitiy(Abilitiy):
         damage_attacker = self._attacker.damage
         self._attacker.ensure_is_alive()
 
-        if self._attacker.title == 'Priest' and enemy.is_undead:
+        if enemy.is_undead:
             damage_attacker *= 2
 
         enemy.take_damage(damage_attacker)
