@@ -22,7 +22,8 @@ class Necromancer(SpellCaster, Observer):
             raise UnitIsDead(self.title + 'is dead!')
 
     def attack(self, enemy):
-        self._necromancer_abilitiy.use_abilitiy_one(enemy)
+        if self.title != 'Werewolf':
+            self._necromancer_abilitiy.use_abilitiy_one(enemy)
         super(Necromancer, self).attack(enemy)
 
     def add_observable(self, observable):
@@ -38,10 +39,12 @@ class Necromancer(SpellCaster, Observer):
         self.erase_observable(observable)
         self.add_hit_points(int(heal))
 
+    @property
     def is_undead(self):
         return self._is_undead
 
     def change_abilitiy(self, new_abilitiy):
+        print()
         super(Necromancer, self).change_abilitiy(new_abilitiy)
         self._necromancer_abilitiy = new_abilitiy
 
