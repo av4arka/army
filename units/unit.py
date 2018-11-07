@@ -96,6 +96,6 @@ class Unit(Observable):
             observer.update(self)
 
     def __repr__(self):
-        return 'Title: %s\nHp: %d\nDmg: %d\n' % (self.title, self.hit_points, self.damage)
+        return 'Title is %s\nHp: %d\nDmg: %d\n' % (self.title, self.hit_points, self.damage)
 
 
