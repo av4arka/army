@@ -87,6 +87,6 @@ Additional features:
 ```
 
 ### Installation instructions
-1)Clone this repository 
-2)Import modul my_army in folder my_army
-3)Use this code
+- 1)Clone this repository 
+- 2)Import modul my_army in folder my_army
+- 3)Use this code
