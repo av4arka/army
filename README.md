@@ -36,54 +36,67 @@ Additional features:
 ### For example:
 ##### Units attack:
 ```python
-    berserker = Berserker()
-    soldier = Soldier()
-    roque = Roque()
-    vampire = Vampire()
-    werewolf = Werewolf()
+from my_army import my_army
 
-    # soldier hp = 200, roque hp = 150
-    soldier.attack(roque)
-    # soldier hp = 180, roque hp = 105
-    roque.attack(soldier)
-    # roque hp = 105, units don't counterattack him
-    soldier.attack(vampire)
-    # vampire hp = 105, vampire to be treated
-    berserker.take_magic_damage(100)
-    #berserker is immune to magic
-    werewolf.use_abilitiy_two()
-    #werewolf transformed in wolf
-    werewolf.use_abilitiy_one(soldier)
-    #werewolf turned the soldier into werewolf, and soldier has the same abilitiy and state 
+berserker = my_army.Berserker()
+soldier = my_army.Soldier()
+roque = my_army.Roque()
+vampire = my_army.Vampire()
+werewolf = my_army.Werewolf()
+
+print(berserker)
+# Title is Berserker
+# Hp: 190
+# Dmg: 35
+
+# soldier hp = 200, roque hp = 150
+soldier.attack(roque)
+# soldier hp = 180, roque hp = 105
+roque.attack(soldier)
+# roque hp = 105, units don't counterattack him
+soldier.attack(vampire)
+# vampire hp = 105, vampire to be treated
+berserker.take_magic_damage(100)
+#berserker is immune to magic
+werewolf.use_abilitiy_two()
+#werewolf transformed in wolf
+werewolf.use_abilitiy_one(soldier)
+#werewolf turned the soldier into werewolf, and soldier has the same abilitiy and state
+
 ```
 #### Spellcasters abilities:
 ```python
-    wizard = Wizard()
-    healer = Healer()
-    priest = Priest()
-    warlock = Warlock()
-    necromancer = Necromancer()
-    soldier = Soldier()
-    vampire = Vampire()
+from my_army import my_army
 
-    #soldier hp = 200
-    wizard.use_abilitiy_one(soldier)
-    #soldier hp = 170, wizard use default spell - lightning
-    healer.use_abilitiy_one(soldier)
-    #soldier hp = 200, healer use default spell heal
-    healer.change_spell(1)
-    #healer changed spell, 1 = lightning
-    healer.use_abilitiy_one(soldier)
-    #soldier hp = 185
-    priest.attack(vampire)
-    #priest deals x2 damage to the undead
-    warlock.use_abilitiy_two()
-    #warlock created the demon
-    warlock[0].attack(soldier)
-    #the demon attacked the soldier
-    necromancer.attack(soldier)
-    #The necromancer attacked the soldier, after the death of 
-    # the soldier the necromancer will receive some of his vitality
+wizard = my_army.Wizard()
+healer = my_army.Healer()
+priest = my_army.Priest()
+warlock = my_army.Warlock()
+necromancer = my_army.Necromancer()
+soldier = my_army.Soldier()
+vampire = my_army.Vampire()
+print(soldier)
+#Title is Soldier
+#Hp: 200
+#Dmg: 45
+wizard.use_abilitiy_one(soldier)
+#soldier hp = 170, wizard use defaul spell lightning
+healer.use_abilitiy_one(soldier)
+#soldier hp = 200, healer use default spell heal
+healer.change_spell(1)
+#healer changed spell, 1 = lightning
+healer.use_abilitiy_one(soldier)
+#soldier hp = 185
+priest.attack(vampire)
+#priest deals x2 damage to the undead
+warlock.use_abilitiy_two()
+#warlock created the demon
+warlock[0].attack(soldier)
+#the demon attacked the soldier
+necromancer.attack(soldier)
+#The necromancer attacked the soldier, after the death of
+# the soldier the necromancer will receive some of his vitality
+
 ```
 
 ### Installation instructions
